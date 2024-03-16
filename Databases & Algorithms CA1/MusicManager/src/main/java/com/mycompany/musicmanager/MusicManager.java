@@ -1,7 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
-
 package com.mycompany.musicmanager;
 
 /**
@@ -11,6 +10,7 @@ package com.mycompany.musicmanager;
 public class MusicManager {
 
     public static void main(String[] args) {
-        
+        MusicManagerGUI GUI = new MusicManagerGUI();
+        GUI.setVisible(true);
     }
 }
