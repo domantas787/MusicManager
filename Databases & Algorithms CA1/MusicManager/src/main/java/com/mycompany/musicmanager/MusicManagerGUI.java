@@ -16,6 +16,7 @@ public class MusicManagerGUI extends javax.swing.JFrame {
     // Declare the list models
     private DefaultListModel<String> likedSongsModel = new DefaultListModel<>();
     private DefaultListModel<String> carPlaylistModel = new DefaultListModel<>();
+    private DefaultListModel<String> gymPlaylistModel = new DefaultListModel<>();
 
     /**
      * Creates new form MusicManagerGUI
@@ -25,6 +26,15 @@ public class MusicManagerGUI extends javax.swing.JFrame {
         // Set the model for the lists
         jList1.setModel(likedSongsModel);
         jList2.setModel(carPlaylistModel);
+        jList3.setModel(gymPlaylistModel);
+
+        //Update the count for the liked songs
+        updateSongCountLabel();
+        //Update the count for the car playlist
+        updateCarCountLabel();
+        //Update the count for the gym playlist
+        updateGymCountLabel();
+
     }
 
     /**
@@ -54,6 +64,10 @@ public class MusicManagerGUI extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jButton9 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -96,7 +110,7 @@ public class MusicManagerGUI extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setText("Display Songs");
+        jButton5.setText("Up");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -128,6 +142,13 @@ public class MusicManagerGUI extends javax.swing.JFrame {
             }
         });
 
+        jButton9.setText("Down");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -135,72 +156,85 @@ public class MusicManagerGUI extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(359, 359, 359)
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addGap(280, 280, 280))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(61, 61, 61)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jButton4)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton5))
-                                .addGap(36, 36, 36)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGap(45, 45, 45)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(54, 54, 54)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(44, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(75, 75, 75)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton7)
-                                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton8))
-                                .addGap(79, 79, 79))))))
+                                    .addComponent(jButton2)
+                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton4)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(154, 154, 154)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton7)
+                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton8))
+                        .addGap(79, 79, 79))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(103, 103, 103)
                 .addComponent(jLabel2)
-                .addGap(175, 175, 175)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addGap(98, 98, 98))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(76, 76, 76)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(224, 224, 224)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel4)
+                        .addGap(98, 98, 98))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(342, 342, 342))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabel1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
+                        .addGap(47, 47, 47)
                         .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
                         .addComponent(jScrollPane1)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2))
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel5))
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton3)
@@ -213,8 +247,9 @@ public class MusicManagerGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton5)
-                    .addComponent(jButton8))
-                .addContainerGap(48, Short.MAX_VALUE))
+                    .addComponent(jButton8)
+                    .addComponent(jButton9))
+                .addContainerGap(149, Short.MAX_VALUE))
         );
 
         pack();
@@ -234,54 +269,141 @@ public class MusicManagerGUI extends javax.swing.JFrame {
         // Add the song to the list model
         String songInfo = songName + " - " + artistName;
         likedSongsModel.addElement(songInfo);
+
+        updateSongCountLabel();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        // Get the selected song from the list
+        int selectedIndex = jList1.getSelectedIndex();
+        //remove selected song from list
+        likedSongsModel.removeElementAt(selectedIndex);
+
+        updateSongCountLabel();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        // Get the selected song from the list
+        int selectedIndex = jList2.getSelectedIndex();
+        //remove selected song from list
+        carPlaylistModel.removeElementAt(selectedIndex);
+
+        updateCarCountLabel();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-  // Get the size of the liked songs list model
-    int likedSongsCount = likedSongsModel.getSize();
+        // Get the size of the liked songs list model
+        int likedSongsCount = likedSongsModel.getSize();
 
-    // Check if there are any songs in the liked songs list
-    if (likedSongsCount == 0) {
-      JOptionPane.showMessageDialog(this, "There are no songs in the Liked Songs list.");
-      return;
-    }
+        // Check if there are any songs in the liked songs list
+        if (likedSongsCount == 0) {
+            JOptionPane.showMessageDialog(this, "There are no songs in the Liked Songs list.");
+            return;
+        }
 
-    // Get the latest song information
-    String latestSong = likedSongsModel.getElementAt(likedSongsCount - 1);
+        // Get the latest song information
+        String latestSong = likedSongsModel.getElementAt(likedSongsCount - 1);
 
-    // Check if the latest song already exists in the car playlist
-    if (!carPlaylistModel.contains(latestSong)) {
-      // Add the latest song to the car playlist model
-      carPlaylistModel.addElement(latestSong);
-    } else {
-      // Show a message if the song already exists
-      JOptionPane.showMessageDialog(this, "The song is already in the Car Playlist.");
-    }
+        // Check if the latest song already exists in the car playlist
+        if (!carPlaylistModel.contains(latestSong)) {
+            // Add the latest song to the car playlist model
+            carPlaylistModel.addElement(latestSong);
+        } else {
+            // Show a message if the song already exists
+            JOptionPane.showMessageDialog(this, "The song is already in the Car Playlist.");
+        }
+
+        updateCarCountLabel();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+        // Get the selected index of the song in the car playlist
+        int selectedIndex = jList2.getSelectedIndex();
+
+        // Check if a song is selected and if it's not the first song
+        if (selectedIndex != -1 && selectedIndex > 0) {
+            // Get the selected song information
+            String selectedSong = carPlaylistModel.getElementAt(selectedIndex);
+
+            // Remove the selected song from the current position
+            carPlaylistModel.removeElementAt(selectedIndex);
+
+            // Insert the selected song at the previous position (one position up)
+            carPlaylistModel.insertElementAt(selectedSong, selectedIndex - 1);
+        } else {
+            // Show a message if no song is selected or it's the first song
+            JOptionPane.showMessageDialog(this, "Please select a song in the Car Playlist that is not the first song.");
+        }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+        // Get the size of the liked songs list model
+        int likedSongsCount = likedSongsModel.getSize();
+
+        // Check if there are any songs in the liked songs list
+        if (likedSongsCount == 0) {
+            JOptionPane.showMessageDialog(this, "There are no songs in the Liked Songs list.");
+            return;
+        }
+
+        // Get the latest song information
+        String latestSong = likedSongsModel.getElementAt(likedSongsCount - 1);
+
+        // Check if the latest song already exists in the car playlist
+        if (!gymPlaylistModel.contains(latestSong)) {
+            // Add the latest song to the car playlist model
+            gymPlaylistModel.addElement(latestSong);
+        } else {
+            // Show a message if the song already exists
+            JOptionPane.showMessageDialog(this, "The song is already in the Car Playlist.");
+        }
+
+        updateGymCountLabel();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
+        // Get the selected song from the list
+        int selectedIndex = jList3.getSelectedIndex();
+        //remove selected song from list
+        gymPlaylistModel.removeElementAt(selectedIndex);
+
+        updateGymCountLabel();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        int selectedIndex = jList2.getSelectedIndex();
+
+        // Check if a song is selected and if it's not the last song
+        if (selectedIndex != -1 && selectedIndex < carPlaylistModel.getSize() - 1) {
+            // Get the selected song information
+            String selectedSong = carPlaylistModel.getElementAt(selectedIndex);
+
+            // Remove the selected song from the current position
+            carPlaylistModel.removeElementAt(selectedIndex);
+
+            // Insert the selected song at the next position (one position down)
+            carPlaylistModel.insertElementAt(selectedSong, selectedIndex + 1);
+        } else {
+            // Show a message if no song is selected or it's the last song
+            JOptionPane.showMessageDialog(this, "Please select a song in the Car Playlist that is not the last song.");
+        }
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void updateSongCountLabel() {
+        jLabel5.setText(String.valueOf(likedSongsModel.getSize()));
+    }
+
+    private void updateCarCountLabel() {
+        jLabel6.setText(String.valueOf(carPlaylistModel.getSize()));
+    }
+
+    private void updateGymCountLabel() {
+        jLabel7.setText(String.valueOf(gymPlaylistModel.getSize()));
+    }
 
     /**
      * @param args the command line arguments
@@ -327,10 +449,14 @@ public class MusicManagerGUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JList<String> jList1;
     private javax.swing.JList<String> jList2;
     private javax.swing.JList<String> jList3;
