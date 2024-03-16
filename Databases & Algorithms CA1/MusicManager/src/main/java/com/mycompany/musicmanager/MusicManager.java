@@ -13,4 +13,5 @@ public class MusicManager {
         MusicManagerGUI GUI = new MusicManagerGUI();
         GUI.setVisible(true);
     }
+
 }

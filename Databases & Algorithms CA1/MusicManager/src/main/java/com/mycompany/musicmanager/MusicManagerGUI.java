@@ -17,6 +17,8 @@ public class MusicManagerGUI extends javax.swing.JFrame {
     private DefaultListModel<String> likedSongsModel = new DefaultListModel<>();
     private DefaultListModel<String> carPlaylistModel = new DefaultListModel<>();
     private DefaultListModel<String> gymPlaylistModel = new DefaultListModel<>();
+    
+
 
     /**
      * Creates new form MusicManagerGUI
@@ -488,6 +490,8 @@ public class MusicManagerGUI extends javax.swing.JFrame {
     private void updateGymCountLabel() {
         jLabel7.setText(String.valueOf(gymPlaylistModel.getSize()));
     }
+    
+
 
     /**
      * @param args the command line arguments
